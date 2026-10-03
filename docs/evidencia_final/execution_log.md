@@ -18,3 +18,9 @@ Task 1: complete. Configuración y 28 pruebas previas: 30 aprobadas. Se resolvie
 Task 2: complete. Generador determinista y serialización: 4 pruebas de configuración y datos aprobadas.
 Cambio solicitado: repositorio nuevo lumina_proyecto_final. Avance 2 se conserva en main; la implementación reutilizada se reconoce como antecedente.
 Ruling: ventas superiores al inventario se marcan ausentes, en lugar de sustituirlas por el máximo. Se excluyen ventanas incompletas del objetivo para evitar etiquetas inventadas; los faltantes de predictores se imputan solamente con entrenamiento.
+
+Task 3: complete. Limpieza conservadora y pruebas anteriores: 34 aprobadas.
+Task 4: complete. Rezagos, calendario con huecos y cortes por semanas completas verificados.
+Task 5: complete. Métricas conocidas y bootstrap móvil de cuatro semanas: suite total 40 aprobadas.
+Ruling: se agrega inventario_cierre como metadato, calculado con datos observados al cierre, para comparar una previsión futura con existencia disponible en el mismo momento. Usar inventario inicial sin descontar ventas sobreestimaría cobertura.
+Ruling: con solo doce semanas en prueba, el intervalo bootstrap se presenta como orientativo y conserva bloques de cuatro semanas debido a etiquetas superpuestas.

@@ -129,6 +129,7 @@ class EvaluationMetrics:
     mae: float
     rmse: float
     wape: float | None
+    r2: float = 0.0
 
 
 @dataclass(frozen=True)
