@@ -1,0 +1,35 @@
+# Entorno local
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Artefactos generados durante ejecuciones
+artifacts/*.json
+artifacts/*.png
+!artifacts/development_log.md
+docs/images/*.png
+
+# Datos locales: no se versionan fuentes operativas
+*.csv
+*.xlsx
+*.parquet
+
+# Editores y sistema operativo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Datos y evidencia reproducible del caso académico
+!data/raw/*.csv
+!artifacts/project_final/**/*.csv
+!artifacts/project_final/*.csv
+!docs/evidencia_final/*.csv
+.superpowers/

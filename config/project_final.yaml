@@ -1,0 +1,33 @@
+# Contrato del escenario académico; no describe una fuente empresarial real.
+source_path: data/raw/lumina_operaciones.csv
+output_dir: artifacts/project_final
+scenario:
+  seed: 42
+  product_count: 20
+  branch_count: 5
+  week_count: 104
+  start_date: '2024-01-01'
+experiment:
+  train_start_week: 5
+  train_end_week: 68
+  validation_start_week: 73
+  validation_end_week: 84
+  test_start_week: 89
+  test_end_week: 100
+  horizon_weeks: 4
+  seed: 42
+  start_date: '2024-01-01'
+dataset:
+  table_name: operaciones_semanales
+  columns: [semana, sucursal_id, producto_id, categoria, precio, promocion, inventario_inicial, unidades_vendidas]
+  identifier_columns: [producto_id, sucursal_id, semana]
+  date_column: semana
+  target_column: ventas_proximas_4_semanas
+  prediction_horizon: 4 semanas
+  category_column: categoria
+  price_column: precio
+  promotion_column: promocion
+  inventory_column: inventario_inicial
+  sales_column: unidades_vendidas
+  numeric_features: [precio, promocion, inventario_inicial, ventas_semana_anterior, ventas_hace_2_semanas, ventas_hace_4_semanas, promedio_ventas_4_semanas, variabilidad_4_semanas, tendencia_reciente, mes, semana_anio, inventario_sobre_promedio]
+  categorical_features: [sucursal_id, producto_id, categoria]

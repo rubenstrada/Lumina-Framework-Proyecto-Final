@@ -1,0 +1,10 @@
+pandas>=2.1
+numpy>=1.26
+matplotlib>=3.7
+seaborn>=0.13
+scikit-learn>=1.3
+PyYAML>=6.0
+joblib>=1.3
+
+# Dependencia de desarrollo para ejecutar la evidencia automatizada.
+pytest>=8.0

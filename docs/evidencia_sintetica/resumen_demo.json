@@ -1,0 +1,66 @@
+{
+  "seed": 20260916,
+  "shape": {
+    "rows": 74,
+    "columns": 5
+  },
+  "columns": [
+    "fecha_demo",
+    "entidad_demo",
+    "categoria_demo",
+    "valor_demo",
+    "promocion_demo"
+  ],
+  "dtypes": {
+    "fecha_demo": "datetime64[us]",
+    "entidad_demo": "string",
+    "categoria_demo": "string",
+    "valor_demo": "float64",
+    "promocion_demo": "bool"
+  },
+  "missing": {
+    "fecha_demo": {
+      "count": 0,
+      "percentage": 0.0
+    },
+    "entidad_demo": {
+      "count": 0,
+      "percentage": 0.0
+    },
+    "categoria_demo": {
+      "count": 3,
+      "percentage": 4.05
+    },
+    "valor_demo": {
+      "count": 4,
+      "percentage": 5.41
+    },
+    "promocion_demo": {
+      "count": 0,
+      "percentage": 0.0
+    }
+  },
+  "exact_duplicates": 2,
+  "categorical_cardinality": {
+    "entidad_demo": 3,
+    "categoria_demo": 3,
+    "promocion_demo": 2
+  },
+  "numeric_statistics": {
+    "valor_demo": {
+      "count": 70.0,
+      "mean": 56.843857,
+      "std": 5.462105,
+      "min": 45.78,
+      "25%": 52.3675,
+      "50%": 57.51,
+      "75%": 60.2775,
+      "max": 68.18
+    }
+  },
+  "visualizations": [
+    "serie_temporal_demo.png",
+    "distribucion_demo.png",
+    "mapa_calor_demo.png"
+  ]
+}

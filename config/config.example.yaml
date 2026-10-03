@@ -1,0 +1,14 @@
+# Los valores null y las listas vacías son intencionales.
+# Deben completarse únicamente con definiciones confirmadas por Boreal.
+source_path: null
+output_dir: artifacts
+
+dataset:
+  table_name: null
+  columns: []
+  identifier_columns: []
+  date_column: null
+  target_column: null
+  prediction_horizon: null
+  numeric_features: []
+  categorical_features: []
