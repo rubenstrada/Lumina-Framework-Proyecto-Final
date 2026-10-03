@@ -1,0 +1,14 @@
+{
+  "original_rows": 10400,
+  "raw_rows": 10431,
+  "injected_issues": {
+    "duplicados": 31,
+    "faltantes_precio": 31,
+    "faltantes_inventario": 31,
+    "categorias_inconsistentes": 31,
+    "fechas_invalidas": 31,
+    "precios_imposibles": 31,
+    "inventarios_imposibles": 31,
+    "ventas_corruptas": 31
+  }
+}

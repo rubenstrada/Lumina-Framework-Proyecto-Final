@@ -5,12 +5,28 @@ from lumina_framework.core.exceptions import InsufficientDataError, DataValidati
 
 
 class FeatureEngineer:
-    def build(self, data, contract):
+    def build(self, data, contract, calendar_start=None):
         """Usa solamente semanas anteriores en rezagos y exige etiquetas observadas."""
         date, sales = contract.date_column, contract.sales_column
         keys = [k for k in contract.identifier_columns if k != date]
+        if data.empty:
+            raise InsufficientDataError('No existen grupos disponibles.')
+        try:
+            dates = pd.to_datetime(data[date], errors='coerce')
+            if dates.isna().any() or not dates.eq(dates.dt.normalize()).all():
+                raise DataValidationError('Las semanas requieren fechas válidas sin componente horario.')
+            anchor = dates.min() if calendar_start is None else pd.Timestamp(calendar_start)
+            if pd.isna(anchor) or anchor != anchor.normalize():
+                raise DataValidationError('El inicio del calendario requiere una fecha válida sin componente horario.')
+            offsets = (dates - anchor).dt.days
+        except (ValueError, TypeError, AttributeError) as exc:
+            raise DataValidationError('Las fechas no son compatibles con el calendario semanal.') from exc
+        if offsets.mod(7).ne(0).any():
+            raise DataValidationError('Hay fechas fuera del calendario semanal declarado.')
+        prepared = data.copy(deep=True)
+        prepared[date] = dates
         results = []
-        for _, group in data.groupby(keys, sort=True):
+        for _, group in prepared.groupby(keys, sort=True):
             g = group.copy().set_index(date).sort_index()
             if len(g) < 9:
                 raise InsufficientDataError('Se requieren nueve semanas por grupo.')

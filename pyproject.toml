@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lumina-framework"
-version = "0.1.0"
-description = "Framework modular conceptual para el caso académico de Lumina Datos Operativos"
+version = "1.0.0"
+description = "Framework modular de regresión temporal para el proyecto final de Lumina"
 requires-python = ">=3.11"
 dependencies = [
     "pandas>=2.0",
@@ -30,4 +30,3 @@ where = ["src"]
 pythonpath = ["src"]
 testpaths = ["tests"]
 addopts = "-ra"
-

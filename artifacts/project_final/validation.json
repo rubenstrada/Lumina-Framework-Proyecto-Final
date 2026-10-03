@@ -1,0 +1,24 @@
+{
+  "valid": false,
+  "missing_columns": [],
+  "exact_duplicates": 31,
+  "key_duplicates": 34,
+  "invalid_dates": 31,
+  "missing_by_column": {
+    "semana": 0,
+    "sucursal_id": 0,
+    "producto_id": 0,
+    "categoria": 0,
+    "precio": 31,
+    "promocion": 0,
+    "inventario_inicial": 32,
+    "unidades_vendidas": 0
+  },
+  "negative_by_column": {
+    "precio": 32,
+    "inventario_inicial": 31,
+    "unidades_vendidas": 0
+  },
+  "sales_above_inventory": 62,
+  "inconsistent_categories": 31
+}

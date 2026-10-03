@@ -13,6 +13,13 @@ from lumina_framework.modeling.baseline import NaiveFourWeekBaseline
 from lumina_framework.modeling.evaluator import ModelEvaluator
 
 
+class NonNegativePipeline(Pipeline):
+    """La regla de salida viaja con el modelo guardado y con su evaluación."""
+
+    def predict(self, X, **params):
+        return np.maximum(super().predict(X, **params), 0)
+
+
 @dataclass
 class ExperimentResult:
     validation_metrics: pd.DataFrame
@@ -48,9 +55,9 @@ class ModelExperimentRunner:
             for depth in (8,None) for leaf in (2,5)]
         best = {}
         for name, params, estimator in candidates:
-            pipeline = Pipeline([('preprocessor',clone(transformer)),('model',estimator)])
+            pipeline = NonNegativePipeline([('preprocessor',clone(transformer)),('model',estimator)])
             pipeline.fit(split.train[features],split.train[target])
-            prediction = np.maximum(pipeline.predict(split.validation[features]),0)
+            prediction = pipeline.predict(split.validation[features])
             metrics = evaluator.calculate_regression_metrics(split.validation[target],prediction)
             records.append(dict(modelo=name,configuracion=params,**asdict(metrics)))
             if name not in best or metrics.mae < best[name][0]:
@@ -72,7 +79,7 @@ class ModelExperimentRunner:
         for name, (_,params,val_pipeline) in best.items():
             val_models[name] = val_pipeline
             model = clone(val_pipeline).fit(refit[features],refit[target])
-            prediction_frame[name] = np.maximum(model.predict(split.test[features]),0)
+            prediction_frame[name] = model.predict(split.test[features])
             fitted[name] = model
             if name == 'Ridge':
                 coefficients = pd.DataFrame({'variable':model.named_steps['preprocessor'].get_feature_names_out(),

@@ -1,0 +1,15 @@
+{
+  "boundaries": {
+    "train_start": "2024-01-29",
+    "train_end": "2025-04-14",
+    "validation_start": "2025-05-19",
+    "validation_end": "2025-08-04",
+    "test_start": "2025-09-08",
+    "test_end": "2025-11-24"
+  },
+  "rows": {
+    "train": 6017,
+    "validation": 1159,
+    "test": 1139
+  }
+}

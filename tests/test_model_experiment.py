@@ -39,3 +39,11 @@ def test_experiment_handles_unseen_category_in_test():
     expected = split.train.loc[:,list(c.numeric_features)].median().to_numpy()
     np.testing.assert_allclose(statistics,expected)
     assert a.refit_rows == len(split.train)+len(split.validation)
+
+
+def test_persisted_prediction_rule_is_nonnegative_even_when_ridge_extrapolates():
+    c,e,split = experiment_fixture()
+    split.test.loc[:,'precio'] = 999999
+    result = ModelExperimentRunner().run(split,c,e)
+    ridge = result.validation_pipelines['Ridge']
+    assert (ridge.predict(split.test[list(c.numeric_features+c.categorical_features)]) >= 0).all()

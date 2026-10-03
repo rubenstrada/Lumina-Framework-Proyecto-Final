@@ -77,10 +77,11 @@ class DataCleaner:
         cleaned[cat] = normalized
         for c in (contract.price_column, contract.inventory_column, contract.sales_column):
             values = pd.to_numeric(cleaned[c], errors='coerce')
+            newly_missing = cleaned[c].notna() & values.isna()
             bad = (values < 0) | (values.abs() == float('inf'))
             if c == contract.price_column:
                 bad |= values == 0
-            record('invalidate_'+c, bad.sum(), 'Imposibles a faltantes; imputación del predictor se ajusta con entrenamiento.')
+            record('invalidate_'+c, (bad | newly_missing).sum(), 'Valores imposibles o no numéricos a faltantes; imputación del predictor se ajusta con entrenamiento.')
             cleaned[c] = values.mask(bad)
         sales, inventory = contract.sales_column, contract.inventory_column
         corrupt = cleaned[sales] > cleaned[inventory]

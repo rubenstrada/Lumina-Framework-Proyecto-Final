@@ -4,7 +4,7 @@ import argparse
 from collections.abc import Sequence
 from pathlib import Path
 
-from lumina_framework.core.config import load_yaml_configuration
+from lumina_framework.core.config import load_yaml_configuration, load_project_configuration
 from lumina_framework.pipeline.orchestrator import LuminaPipeline
 
 
@@ -18,14 +18,19 @@ def build_parser() -> argparse.ArgumentParser:
         required=True,
         help="Ruta al archivo YAML de configuración y contrato.",
     )
+    parser.add_argument('--mode',choices=['assess','run'],default='assess',help='Diagnóstico o ejecución completa.')
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     """Carga configuración y muestra el diagnóstico sin inventar datos."""
     args = build_parser().parse_args(argv)
-    config, contract = load_yaml_configuration(Path(args.config))
-    result = LuminaPipeline().assess(config, contract)
+    if args.mode == 'run':
+        config,contract,scenario,experiment=load_project_configuration(Path(args.config))
+        result=LuminaPipeline().run_project(config,contract,scenario,experiment)
+    else:
+        config, contract = load_yaml_configuration(Path(args.config))
+        result = LuminaPipeline().assess(config, contract)
     print(result.to_json())
     return 0 if result.status != "failed" else 1
 

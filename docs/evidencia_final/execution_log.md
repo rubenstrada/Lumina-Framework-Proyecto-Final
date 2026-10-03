@@ -4,7 +4,7 @@ Plan: docs/superpowers/plans/2026-10-02-proyecto-final-framework.md
 
 Modalidad nativa aprobada por el estudiante el 2 de octubre de 2026.
 
-Se trabaja en la rama proyecto-final dentro del checkout existente. Se conserva main como referencia del Avance 2.
+Se inició en una rama separada del checkout anterior. Por solicitud del estudiante, la entrega final se migró a una repo independiente llamada Lumina-Framework-Proyecto-Final. La repo del Avance 2 y su rama main se conservan como referencia; los cambios intermedios locales se guardaron de forma recuperable.
 
 Preflight: configuración -> generador -> validación y limpieza -> variables y cortes -> métricas -> experimento -> visualización -> reportes -> orquestador. Las interfaces se implementan en ese orden.
 
@@ -24,3 +24,29 @@ Task 4: complete. Rezagos, calendario con huecos y cortes por semanas completas 
 Task 5: complete. Métricas conocidas y bootstrap móvil de cuatro semanas: suite total 40 aprobadas.
 Ruling: se agrega inventario_cierre como metadato, calculado con datos observados al cierre, para comparar una previsión futura con existencia disponible en el mismo momento. Usar inventario inicial sin descontar ventas sobreestimaría cobertura.
 Ruling: con solo doce semanas en prueba, el intervalo bootstrap se presenta como orientativo y conserva bloques de cuatro semanas debido a etiquetas superpuestas.
+
+Task 6: complete. Ocho configuraciones de validación, tres enfoques en prueba, imputación solo con entrenamiento y categorías nuevas comprobadas.
+Task 7: complete. Ocho gráficas producidas por Matplotlib y Seaborn e inspeccionadas; no se utilizó IA de imágenes.
+Task 8: complete. Perfiles, limpieza, métricas, predicciones, señales, modelo, reporte y manifiesto generados.
+Task 9: complete. Ejecución inicial y repetida sobre 10,431 filas; 10,369 después de limpiar. Cortes utilizables: 6,017 entrenamiento, 1,159 validación, 1,139 prueba.
+
+Revisión independiente: se inspeccionó el flujo temporal y se reprodujeron casos límite. Las pruebas nuevas fallaron antes de las correcciones:
+
+- Ridge extrapolaba a valores negativos mientras la evaluación recortaba fuera del pipeline. La regla ahora pertenece al pipeline persistido; la recarga se verifica sin recortar otra vez.
+- Una repetición fallida conservaba un manifiesto de éxito previo. Ahora se escribe running al iniciar y failed al fallar.
+- Un WAPE no definido provocaba error al escribir el reporte. Se presenta No disponible.
+- Dos inventarios desconocidos se marcaban sin revisión. Ahora requieren revisión de calidad; se distingue de brecha de cobertura.
+- Una fecha fuera del calendario podía desaparecer al reindexar. Se rechaza explícitamente antes de crear ventanas.
+- Texto numérico inválido pasaba a ausente sin contarse. La bitácora registra la transformación sin volver a contar ausentes originales.
+
+El corte final tiene 96 de las 100 combinaciones: 94 con brecha y 2 con inventario desconocido. Las cuatro sin ventana utilizable no se consideran sin riesgo.
+
+Random Forest seleccionado con validación (300 árboles, profundidad sin límite, cinco muestras mínimas por hoja). Prueba: MAE 38.984577, referencia 51.295874; mejora 24.000558 %. No se modificaron parámetros al consultar prueba.
+
+El entorno local produjo advertencias de deprecación de Seaborn/Matplotlib, sin impedir las pruebas o las figuras. Los permisos de temporales de pytest se resolvieron con acceso local aprobado; no se cambió la lógica para ocultar una restricción de entorno.
+
+Task 10: documento, documentación y paquete terminados. Word de 16 páginas con 12 instrucciones, 12 respuestas y 8 figuras. Se conservaron geometría, estilos, numeración, fuentes y tema de la referencia; el archivo original permanece inalterado. Al no estar disponible LibreOffice, se exportó una copia con Microsoft Word y se inspeccionó el render completo de sus páginas.
+
+Verificación final: 58 pruebas aprobadas, 0 fallos; evidencia XML versionada. El ZIP se extrajo en un directorio temporal independiente, se construyó e instaló el paquete, se repitieron las 58 pruebas y la ejecución completa produjo las mismas métricas. La primera comprobación de instalación sin aislamiento falló porque el entorno no tenía setuptools; se utilizó el backend aislado declarado en pyproject, sin modificar el entorno anterior.
+
+Publicación autorizada en repo independiente: https://github.com/rubenstrada/Lumina-Framework-Proyecto-Final. No se fusiona ni se sobrescribe la repo del avance anterior.

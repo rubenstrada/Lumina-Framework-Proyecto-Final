@@ -1,0 +1,42 @@
+[
+  {
+    "rule": "remove_exact_duplicates",
+    "affected_rows": 31,
+    "details": "Duplicados exactos."
+  },
+  {
+    "rule": "drop_invalid_dates",
+    "affected_rows": 31,
+    "details": "La fecha no se inventa ni se recupera usando el generador."
+  },
+  {
+    "rule": "normalize_categories",
+    "affected_rows": 31,
+    "details": "Espacios y mayúsculas."
+  },
+  {
+    "rule": "invalidate_precio",
+    "affected_rows": 31,
+    "details": "Valores imposibles o no numéricos a faltantes; imputación del predictor se ajusta con entrenamiento."
+  },
+  {
+    "rule": "invalidate_inventario_inicial",
+    "affected_rows": 31,
+    "details": "Valores imposibles o no numéricos a faltantes; imputación del predictor se ajusta con entrenamiento."
+  },
+  {
+    "rule": "invalidate_unidades_vendidas",
+    "affected_rows": 0,
+    "details": "Valores imposibles o no numéricos a faltantes; imputación del predictor se ajusta con entrenamiento."
+  },
+  {
+    "rule": "invalidate_sales_above_inventory",
+    "affected_rows": 31,
+    "details": "Ventas corruptas pasan a ausentes; se excluyen ventanas de etiqueta incompletas."
+  },
+  {
+    "rule": "preserve_plausible_outliers",
+    "affected_rows": 0,
+    "details": "Picos dentro del inventario se conservan; no se usa un umbral aprendido del futuro."
+  }
+]

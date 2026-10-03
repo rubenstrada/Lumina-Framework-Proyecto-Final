@@ -1,0 +1,89 @@
+{
+  "run_id": "f22e5fbb-4961-4a78-8871-d3b133be1f38",
+  "started_at": "2026-10-03T04:57:15.946179+00:00",
+  "status": "completed",
+  "events": [
+    "source_loaded",
+    "source_validated",
+    "cleaning_completed",
+    "temporal_split_completed",
+    "model_experiment_completed",
+    "visualizations_generated",
+    "interpretation_completed"
+  ],
+  "artifacts": {
+    "profile_before": "profile_before.json",
+    "profile_after": "profile_after.json",
+    "validation": "validation.json",
+    "cleaning_log": "cleaning_log.json",
+    "cleaned_data": "cleaned_data.csv",
+    "temporal_split": "temporal_split.json",
+    "validation_metrics": "validation_metrics.csv",
+    "test_metrics": "test_metrics.json",
+    "predictions": "predictions.csv",
+    "segmented_metrics": "segmented_metrics.csv",
+    "inventory_signals": "inventory_signals.csv",
+    "feature_importance": "feature_importance.csv",
+    "ridge_coefficients": "ridge_coefficients.csv",
+    "uncertainty": "uncertainty.json",
+    "model": "model.joblib",
+    "ventas_semanales": "figures/ventas_semanales.png",
+    "distribucion_categoria": "figures/distribucion_categoria.png",
+    "mapa_sucursal_categoria": "figures/mapa_sucursal_categoria.png",
+    "promocion_ventas": "figures/promocion_ventas.png",
+    "comparacion_modelos": "figures/comparacion_modelos.png",
+    "real_vs_predicho": "figures/real_vs_predicho.png",
+    "errores_segmentados": "figures/errores_segmentados.png",
+    "importancia_variables": "figures/importancia_variables.png",
+    "technical_report": "technical_report.md"
+  },
+  "seed": 42,
+  "scenario": {
+    "seed": 42,
+    "product_count": 20,
+    "branch_count": 5,
+    "week_count": 104,
+    "start_date": "2024-01-01"
+  },
+  "experiment": {
+    "train_start_week": 5,
+    "train_end_week": 68,
+    "validation_start_week": 73,
+    "validation_end_week": 84,
+    "test_start_week": 89,
+    "test_end_week": 100,
+    "horizon_weeks": 4,
+    "seed": 42,
+    "forest_trees": 300,
+    "bootstrap_iterations": 1000,
+    "start_date": "2024-01-01"
+  },
+  "source_generation_metadata": {
+    "original_rows": 10400,
+    "raw_rows": 10431,
+    "injected_issues": {
+      "duplicados": 31,
+      "faltantes_precio": 31,
+      "faltantes_inventario": 31,
+      "categorias_inconsistentes": 31,
+      "fechas_invalidas": 31,
+      "precios_imposibles": 31,
+      "inventarios_imposibles": 31,
+      "ventas_corruptas": 31
+    }
+  },
+  "scenario_parameters_are_source_proof": false,
+  "selected_model": "Random Forest",
+  "selection_reason": "Selección por MAE de validación; tolerancia de 2 % favorece Ridge por sencillez. Prueba no participa en selección ni ajuste.",
+  "refit_rows": 7176,
+  "source_sha256": "dccb5d057849652fadb609ca4ffd7319a80ebe6b9adee7788a60e075b154df14",
+  "versions": {
+    "pandas": "3.0.5",
+    "numpy": "2.5.3",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "joblib": "1.6.0"
+  },
+  "python_version": "3.12.14"
+}

@@ -1,0 +1,77 @@
+{
+  "row_count": 10431,
+  "column_count": 8,
+  "dtypes": {
+    "semana": "string",
+    "sucursal_id": "string",
+    "producto_id": "string",
+    "categoria": "string",
+    "precio": "float64",
+    "promocion": "int64",
+    "inventario_inicial": "float64",
+    "unidades_vendidas": "int64"
+  },
+  "missing_counts": {
+    "semana": 0,
+    "sucursal_id": 0,
+    "producto_id": 0,
+    "categoria": 0,
+    "precio": 31,
+    "promocion": 0,
+    "inventario_inicial": 32,
+    "unidades_vendidas": 0
+  },
+  "exact_duplicates": 31,
+  "unique_counts": {
+    "semana": 105,
+    "sucursal_id": 5,
+    "producto_id": 20,
+    "categoria": 8,
+    "precio": 8301,
+    "promocion": 2,
+    "inventario_inicial": 466,
+    "unidades_vendidas": 173
+  },
+  "numeric_statistics": {
+    "precio": {
+      "count": 10400.0,
+      "mean": 327.8525307692,
+      "std": 149.8766079137,
+      "min": -10.0,
+      "25%": 166.72,
+      "50%": 326.92,
+      "75%": 457.7825,
+      "max": 582.78
+    },
+    "promocion": {
+      "count": 10431.0,
+      "mean": 0.1802320008,
+      "std": 0.3843990015,
+      "min": 0.0,
+      "25%": 0.0,
+      "50%": 0.0,
+      "75%": 0.0,
+      "max": 1.0
+    },
+    "inventario_inicial": {
+      "count": 10399.0,
+      "mean": 112.6235214925,
+      "std": 90.0605741136,
+      "min": -5.0,
+      "25%": 47.0,
+      "50%": 95.0,
+      "75%": 159.0,
+      "max": 615.0
+    },
+    "unidades_vendidas": {
+      "count": 10431.0,
+      "mean": 3017.7907199693,
+      "std": 54434.2237860595,
+      "min": 0.0,
+      "25%": 25.5,
+      "50%": 42.0,
+      "75%": 63.0,
+      "max": 999999.0
+    }
+  }
+}
