@@ -1,6 +1,6 @@
 # Framework modular para pronóstico de ventas y revisión de inventario
 
-Este reporte presenta el prototipo funcional del proyecto final de Programación para la inteligencia artificial. Mantengo el formato de instrucción seguida de respuesta. La conclusión técnica es que el flujo funciona y permite comparar una regla histórica con modelos supervisados; su adopción operativa requiere datos y costos del negocio.
+Este reporte presenta el prototipo funcional del proyecto final de Programación para la inteligencia artificial. El flujo permite comparar una regla histórica con modelos supervisados para pronosticar ventas y revisar inventario; su adopción operativa requiere datos y costos del negocio.
 
 Repositorio complementario: https://github.com/rubenstrada/Lumina-Framework-Proyecto-Final
 
@@ -12,21 +12,17 @@ Documento y repo se entregan juntos: el documento desarrolla las respuestas y la
 
 Retoma los avances previos y ajusta la problemática, el objetivo técnico y la arquitectura del framework con base en la retroalimentación recibida.
 
-### Respuesta
-
 El problema que retomé es cómo aprovechar el historial de ventas e inventario de Red Comercial Boreal, con apoyo de Lumina Datos Operativos, para anticipar necesidades de revisión de existencias. En los avances previos propuse una arquitectura configurable porque el caso describía información general, sin entregar una base de datos ni confirmar columnas. Mi punto de partida sigue siendo conocer la estructura y la calidad de los datos antes de elegir un modelo.
 
-Para cumplir la ejecución que pide esta actividad, acordé un escenario simulado de 20 productos, 5 sucursales y 104 semanas, con semilla 42. Sus columnas son decisiones del prototipo, no campos confirmados de la empresa. Esta aclaración aplica a todas las cifras, gráficas y recomendaciones de la entrega.
+Como el caso no incluye una base de datos, trabajé con un escenario simulado de 20 productos, 5 sucursales y 104 semanas, con semilla 42. Sus columnas son decisiones del prototipo, no campos confirmados de la empresa. Esta aclaración aplica a todas las cifras, gráficas y recomendaciones de la entrega.
 
 El objetivo técnico quedó definido como estimar las unidades vendidas acumuladas en las cuatro semanas posteriores a cada corte producto-sucursal-semana. El resultado apoyará una revisión de cobertura de inventario, sin producir órdenes de compra. Elegí ventas observadas como objetivo verificable; cuando el inventario se agota, las ventas dejan de reflejar toda la demanda y no puedo llamar demanda real a la predicción.
 
-La retroalimentación y las decisiones de revisión se tradujeron en un contrato concreto, un generador reproducible, un flujo funcional, comparación con una regla sencilla y separación temporal. No afirmo que el docente haya pedido un algoritmo específico. La arquitectura previa se reutiliza y se amplía por composición. Esta etapa tiene una repo independiente; el Avance 2 permanece como antecedente en https://github.com/rubenstrada/Dise-o-framework-.
+A partir de la revisión de los avances, concreté el contrato de datos, incorporé un generador y completé el flujo de análisis. Elegí los modelos según el objetivo del proyecto, los comparé con una regla sencilla y separé los datos por periodos. Conservé la arquitectura previa y amplié sus componentes para esta etapa. El proyecto final tiene su propia repo; el Avance 2 permanece como antecedente en https://github.com/rubenstrada/Dise-o-framework-.
 
 ## 2
 
 Desarrolla un prototipo funcional en Python. El proyecto deberá organizarse mediante funciones, clases, módulos o archivos separados que permitan reutilizar el código y facilitar su mantenimiento.
-
-### Respuesta
 
 El prototipo se ejecuta con una configuración YAML y genera los datos de entrada si no existe la fuente. Después carga, valida, limpia, explora, prepara variables, entrena, compara y entrega reportes. Si el CSV ya existe, lo carga sin regenerarlo ni corregir la fuente original.
 
@@ -34,7 +30,7 @@ Organicé los archivos por responsabilidad. Una clase agrupa una responsabilidad
 
 La estructura principal es src/lumina_framework con core, data, preprocessing, visualization, modeling, reporting y pipeline. config contiene parámetros; tests verifica comportamiento; scripts inicia procesos; data conserva la fuente; artifacts contiene resultados. La separación permite cambiar un modelo o un gráfico sin reescribir la carga y la limpieza.
 
-El comando de ejecución es `python scripts/run_final_project.py --config config/project_final.yaml`. La instalación, los requisitos y el código completo se encuentran en el README. La entrega documental explica qué hace el proyecto; el repositorio de GitHub permite ejecutarlo y revisar la evidencia.
+El comando de ejecución es `python scripts/run_final_project.py --config config/project_final.yaml`. Los requisitos, los comandos y el código completo se encuentran en el README. La entrega documental explica qué hace el proyecto; el repositorio de GitHub permite ejecutarlo y revisar la evidencia.
 
 ## 3
 
@@ -49,8 +45,6 @@ Integra un flujo completo de trabajo que incluya:
 - Evaluación del desempeño del modelo.
 - Interpretación de resultados.
 - Recomendaciones para la toma de decisiones.
-
-### Respuesta
 
 El flujo conecta módulos con entradas y salidas explícitas:
 
@@ -98,8 +92,6 @@ Las semanas 1 a 4 aportan historial; 69 a 72 y 85 a 88 permiten completar etique
 
 Si la problemática requiere predicción o clasificación, implementa al menos un modelo supervisado. Si la problemática requiere segmentación, agrupamiento o reducción de dimensionalidad, implementa al menos un modelo no supervisado. Puedes integrar ambos enfoques si el caso lo justifica.
 
-### Respuesta
-
 La pregunta es una regresión supervisada: cada fila tiene variables disponibles en el corte y una etiqueta numérica calculada con ventas posteriores. Implementé Ridge y Random Forest, además de una referencia ingenua que pronostica la suma de las cuatro semanas previas. La referencia permite comprobar si el machine learning aporta algo frente a una regla sencilla.
 
 Ridge es una regresión lineal regularizada que facilita revisar coeficientes y reduce inestabilidad entre variables relacionadas. Random Forest combina árboles y permite relaciones no lineales e interacciones. Ambos reciben el mismo preprocesamiento para mantener una comparación consistente; el escalado beneficia a Ridge, aunque los árboles no lo necesitan. Los pipelines encapsulan transformación y ajuste (scikit-learn developers, s. f.-a, s. f.-b).
@@ -109,8 +101,6 @@ Un modelo global aprende de todas las combinaciones, con producto y sucursal cod
 ## 5
 
 Selecciona métricas de evaluación adecuadas para el tipo de problema. Por ejemplo, puedes utilizar exactitud, precisión, recall, F1-score, matriz de confusión, error absoluto medio, error cuadrático medio, R², silhouette score u otras métricas pertinentes. Justifica por qué seleccionaste dichas métricas.
-
-### Respuesta
 
 Elegí MAE como criterio principal porque expresa cuánto difiere la previsión en unidades de venta acumulada por combinación y corte. Es fácil relacionarlo con una revisión de cobertura, sin convertirlo automáticamente en dinero.
 
@@ -123,8 +113,6 @@ La incertidumbre se explora remuestreando bloques móviles de cuatro semanas com
 ## 6
 
 Compara, cuando sea posible, al menos dos configuraciones, modelos o enfoques. Explica cuál ofrece mejores resultados y por qué, considerando tanto el desempeño técnico como la utilidad para el negocio.
-
-### Respuesta
 
 Comparé una referencia sencilla, tres alphas de Ridge y cuatro configuraciones de Random Forest con 300 árboles. La semilla permanece fija y los parámetros se seleccionan por MAE de validación.
 
@@ -156,8 +144,6 @@ El intervalo orientativo del 95 % para MAE del elegido menos MAE de referencia f
 ## 7
 
 Genera visualizaciones que ayuden a comprender los datos, los patrones encontrados, el desempeño del modelo o los resultados obtenidos. Las visualizaciones deben tener título, etiquetas claras y una interpretación escrita.
-
-### Respuesta
 
 Utilicé Matplotlib y Seaborn para explorar el comportamiento de las ventas y revisar el desempeño de los modelos. Las ocho visualizaciones presentan la evolución temporal, diferencias entre grupos y resultados del pronóstico. Cada figura incluye títulos, etiquetas claras y una interpretación relacionada con las preguntas del negocio.
 
@@ -213,11 +199,9 @@ La variable con mayor aumento de MAE al permutarla es promedio_ventas_4_semanas.
 
 Documenta tu código de manera básica mediante comentarios, nombres claros de variables, docstrings o un archivo README. La documentación debe permitir que otra persona comprenda cómo ejecutar y utilizar el prototipo.
 
-### Respuesta
-
 Los nombres y docstrings describen responsabilidades; los comentarios explican decisiones como excluir la semana actual de rolling o mantener huecos del calendario. El README da los comandos de instalación, ejecución y pruebas, las rutas de resultados y las limitaciones. La configuración permite cambiar la fuente y los parámetros sin modificar el punto de entrada.
 
-Desde la raíz de la repo se crea un entorno con `python -m venv .venv`, se activa y se instala el proyecto con `python -m pip install -e .`. Se ejecuta `python scripts/run_final_project.py --config config/project_final.yaml` y se verifica con `python -m pytest -q`. Para repetir con la fuente versionada no hace falta descargar datos. El generador puede probarse por separado en los tests; no sobrescribo un CSV existente al repetir el flujo.
+Para ejecutar el prototipo desde la raíz de la repo utilizo `python scripts/run_final_project.py --config config/project_final.yaml`; las pruebas se ejecutan con `python -m pytest -q`. El README contiene las dependencias y los comandos necesarios. La fuente incluida permite repetir el análisis sin descargar datos, y el generador puede probarse por separado. Al repetir el flujo se conserva el CSV existente.
 
 | Librería | Uso y justificación |
 |---|---|
@@ -250,8 +234,6 @@ Elabora un reporte final que explique:
 - Las limitaciones del prototipo.
 - Posibles mejoras futuras.
 
-### Respuesta
-
 El reporte reúne el problema y el contexto del punto 1, la solución y arquitectura de los puntos 2 y 3, los modelos del 4, la evaluación de los puntos 5 y 6 y los hallazgos visuales del 7. GitHub complementa el reporte con la fuente, los scripts y los artefactos de ejecución; no sustituye las respuestas del documento.
 
 Los datos utilizados tienen ocho campos: semana, sucursal_id, producto_id, categoria, precio, promocion, inventario_inicial y unidades_vendidas. La llave lógica es producto-sucursal-semana. Después de limpiar quedan 62 precios, 62 inventarios y 31 ventas ausentes. Mantenerlos visibles permite distinguir una corrección trazable de la imputación aprendida durante el modelado.
@@ -264,7 +246,7 @@ Mi recomendación es validar primero el contrato operativo, probar varios period
 
 Las limitaciones son dos años de historial, una sola semilla de escenario, doce semanas de prueba, ventas censuradas por inventario y ausencia de costos y futuras campañas. Los promedios agregados ocultan diferencias por producto; el análisis de promociones no identifica causalidad. El pipeline evalúa cortes históricos con etiqueta conocida, no constituye todavía un servicio de pronóstico en vivo.
 
-Como mejoras futuras propongo validación temporal en varios cortes, un camino de inferencia para semanas recientes sin etiqueta futura, medición de faltantes de venta, reposiciones y lead time, costos diferenciados de exceso y faltante, revisión de drift y monitoreo por segmento. No sumaría predicciones superpuestas ni multiplicaría MAE por semanas para inventar un ahorro anual.
+Como mejoras futuras propongo validación temporal en varios cortes, un camino de inferencia para semanas recientes sin etiqueta futura, medición de faltantes de venta, reposiciones y lead time, costos diferenciados de exceso y faltante, revisión de drift y monitoreo por segmento. Para estimar un ahorro anual necesitaría conocer los costos del negocio y considerar que las ventanas de predicción se superponen; multiplicar el MAE por semanas no permite obtener ese ahorro.
 
 ## 10
 
@@ -280,8 +262,6 @@ Incluye evidencia suficiente de trabajo propio. Debes incorporar al menos cinco 
 - Explicación de cambios realizados a partir de retroalimentación.
 - Pruebas realizadas con distintos datos o parámetros.
 - Reflexión final sobre aprendizajes obtenidos.
-
-### Respuesta
 
 Presento ocho tipos de evidencia rastreables que relacionan las decisiones de diseño, la implementación y las comprobaciones del proyecto.
 
@@ -312,8 +292,6 @@ Incluye una declaración de autoría y uso responsable de herramientas digitales
 - Cómo verificaste, probaste o adaptaste cualquier apoyo recibido.
 - Qué decisiones técnicas fueron tomadas con base en tu propio análisis.
 
-### Respuesta
-
 Mi punto de partida fue comprender la lógica del negocio y definir qué problema debía resolver el framework antes de escribir código. Ya había trabajado con modelos, por lo que primero necesitaba establecer qué información analizar, qué resultado obtener y cómo podría utilizarse para tomar decisiones.
 
 En este caso, relacioné el historial de ventas con la revisión del inventario por producto y sucursal. Comprendí que las ventas registradas no representan necesariamente toda la demanda: si se agota el inventario, pueden existir necesidades de compra que no quedan reflejadas en las ventas. Por eso delimité el objetivo como pronosticar ventas observadas y generar señales de revisión, sin presentar las predicciones como órdenes automáticas de compra.
@@ -335,8 +313,6 @@ Para desarrollar y verificar el prototipo utilicé Python, pandas, NumPy, scikit
 ## 12
 
 No se aceptará como proyecto final una entrega generada íntegramente por inteligencia artificial, sin ejecución comprobable, sin explicación personal, sin evidencia de pruebas o sin adaptación al caso seleccionado. El estudiante deberá demostrar comprensión del código, de los resultados y de las decisiones tomadas.
-
-### Respuesta
 
 La entrega relaciona las decisiones de negocio y de diseño con un prototipo ejecutado, una fuente de entrada, pruebas de comportamiento, comparación de parámetros, métricas y figuras reconstruibles. La configuración y las limitaciones mantienen el objetivo que definí para el framework.
 

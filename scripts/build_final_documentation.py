@@ -54,16 +54,16 @@ def build_report():
     sections = []
 
     def section(number, instruction, response):
-        sections.append(f"## {number}\n\n{instruction}\n\n### Respuesta\n\n{response.strip()}\n")
+        sections.append(f"## {number}\n\n{instruction}\n\n{response.strip()}\n")
 
     section(1, "Retoma los avances previos y ajusta la problemática, el objetivo técnico y la arquitectura del framework con base en la retroalimentación recibida.", """
 El problema que retomé es cómo aprovechar el historial de ventas e inventario de Red Comercial Boreal, con apoyo de Lumina Datos Operativos, para anticipar necesidades de revisión de existencias. En los avances previos propuse una arquitectura configurable porque el caso describía información general, sin entregar una base de datos ni confirmar columnas. Mi punto de partida sigue siendo conocer la estructura y la calidad de los datos antes de elegir un modelo.
 
-Para cumplir la ejecución que pide esta actividad, acordé un escenario simulado de 20 productos, 5 sucursales y 104 semanas, con semilla 42. Sus columnas son decisiones del prototipo, no campos confirmados de la empresa. Esta aclaración aplica a todas las cifras, gráficas y recomendaciones de la entrega.
+Como el caso no incluye una base de datos, trabajé con un escenario simulado de 20 productos, 5 sucursales y 104 semanas, con semilla 42. Sus columnas son decisiones del prototipo, no campos confirmados de la empresa. Esta aclaración aplica a todas las cifras, gráficas y recomendaciones de la entrega.
 
 El objetivo técnico quedó definido como estimar las unidades vendidas acumuladas en las cuatro semanas posteriores a cada corte producto-sucursal-semana. El resultado apoyará una revisión de cobertura de inventario, sin producir órdenes de compra. Elegí ventas observadas como objetivo verificable; cuando el inventario se agota, las ventas dejan de reflejar toda la demanda y no puedo llamar demanda real a la predicción.
 
-La retroalimentación y las decisiones de revisión se tradujeron en un contrato concreto, un generador reproducible, un flujo funcional, comparación con una regla sencilla y separación temporal. No afirmo que el docente haya pedido un algoritmo específico. La arquitectura previa se reutiliza y se amplía por composición. Esta etapa tiene una repo independiente; el Avance 2 permanece como antecedente en https://github.com/rubenstrada/Dise-o-framework-.
+A partir de la revisión de los avances, concreté el contrato de datos, incorporé un generador y completé el flujo de análisis. Elegí los modelos según el objetivo del proyecto, los comparé con una regla sencilla y separé los datos por periodos. Conservé la arquitectura previa y amplié sus componentes para esta etapa. El proyecto final tiene su propia repo; el Avance 2 permanece como antecedente en https://github.com/rubenstrada/Dise-o-framework-.
 """)
     section(2, "Desarrolla un prototipo funcional en Python. El proyecto deberá organizarse mediante funciones, clases, módulos o archivos separados que permitan reutilizar el código y facilitar su mantenimiento.", """
 El prototipo se ejecuta con una configuración YAML y genera los datos de entrada si no existe la fuente. Después carga, valida, limpia, explora, prepara variables, entrena, compara y entrega reportes. Si el CSV ya existe, lo carga sin regenerarlo ni corregir la fuente original.
@@ -72,7 +72,7 @@ Organicé los archivos por responsabilidad. Una clase agrupa una responsabilidad
 
 La estructura principal es src/lumina_framework con core, data, preprocessing, visualization, modeling, reporting y pipeline. config contiene parámetros; tests verifica comportamiento; scripts inicia procesos; data conserva la fuente; artifacts contiene resultados. La separación permite cambiar un modelo o un gráfico sin reescribir la carga y la limpieza.
 
-El comando de ejecución es `python scripts/run_final_project.py --config config/project_final.yaml`. La instalación, los requisitos y el código completo se encuentran en el README. La entrega documental explica qué hace el proyecto; el repositorio de GitHub permite ejecutarlo y revisar la evidencia.
+El comando de ejecución es `python scripts/run_final_project.py --config config/project_final.yaml`. Los requisitos, los comandos y el código completo se encuentran en el README. La entrega documental explica qué hace el proyecto; el repositorio de GitHub permite ejecutarlo y revisar la evidencia.
 """)
     modules = table(["Módulo y clase", "Entrada", "Proceso", "Salida"], [
         ("Carga DataLoader", "CSV y contrato", "Carga sin mutar la fuente", "DataFrame"),
@@ -180,7 +180,7 @@ Utilicé Matplotlib y Seaborn para explorar el comportamiento de las ventas y re
     section(8, "Documenta tu código de manera básica mediante comentarios, nombres claros de variables, docstrings o un archivo README. La documentación debe permitir que otra persona comprenda cómo ejecutar y utilizar el prototipo.", f"""
 Los nombres y docstrings describen responsabilidades; los comentarios explican decisiones como excluir la semana actual de rolling o mantener huecos del calendario. El README da los comandos de instalación, ejecución y pruebas, las rutas de resultados y las limitaciones. La configuración permite cambiar la fuente y los parámetros sin modificar el punto de entrada.
 
-Desde la raíz de la repo se crea un entorno con `python -m venv .venv`, se activa y se instala el proyecto con `python -m pip install -e .`. Se ejecuta `python scripts/run_final_project.py --config config/project_final.yaml` y se verifica con `python -m pytest -q`. Para repetir con la fuente versionada no hace falta descargar datos. El generador puede probarse por separado en los tests; no sobrescribo un CSV existente al repetir el flujo.
+Para ejecutar el prototipo desde la raíz de la repo utilizo `python scripts/run_final_project.py --config config/project_final.yaml`; las pruebas se ejecutan con `python -m pytest -q`. El README contiene las dependencias y los comandos necesarios. La fuente incluida permite repetir el análisis sin descargar datos, y el generador puede probarse por separado. Al repetir el flujo se conserva el CSV existente.
 
 {libraries}
 
@@ -214,7 +214,7 @@ Mi recomendación es validar primero el contrato operativo, probar varios period
 
 Las limitaciones son dos años de historial, una sola semilla de escenario, doce semanas de prueba, ventas censuradas por inventario y ausencia de costos y futuras campañas. Los promedios agregados ocultan diferencias por producto; el análisis de promociones no identifica causalidad. El pipeline evalúa cortes históricos con etiqueta conocida, no constituye todavía un servicio de pronóstico en vivo.
 
-Como mejoras futuras propongo validación temporal en varios cortes, un camino de inferencia para semanas recientes sin etiqueta futura, medición de faltantes de venta, reposiciones y lead time, costos diferenciados de exceso y faltante, revisión de drift y monitoreo por segmento. No sumaría predicciones superpuestas ni multiplicaría MAE por semanas para inventar un ahorro anual.
+Como mejoras futuras propongo validación temporal en varios cortes, un camino de inferencia para semanas recientes sin etiqueta futura, medición de faltantes de venta, reposiciones y lead time, costos diferenciados de exceso y faltante, revisión de drift y monitoreo por segmento. Para estimar un ahorro anual necesitaría conocer los costos del negocio y considerar que las ventanas de predicción se superponen; multiplicar el MAE por semanas no permite obtener ese ahorro.
 """)
     section(10, """Incluye evidencia suficiente de trabajo propio. Debes incorporar al menos cinco de los siguientes elementos:
 
@@ -279,7 +279,7 @@ Waskom, M. L. (2021). seaborn: Statistical data visualization. *Journal of Open 
 """
     introduction = f"""# Framework modular para pronóstico de ventas y revisión de inventario
 
-Este reporte presenta el prototipo funcional del proyecto final de Programación para la inteligencia artificial. Mantengo el formato de instrucción seguida de respuesta. La conclusión técnica es que el flujo funciona y permite comparar una regla histórica con modelos supervisados; su adopción operativa requiere datos y costos del negocio.
+Este reporte presenta el prototipo funcional del proyecto final de Programación para la inteligencia artificial. El flujo permite comparar una regla histórica con modelos supervisados para pronosticar ventas y revisar inventario; su adopción operativa requiere datos y costos del negocio.
 
 Repositorio complementario: {REPOSITORY_URL}
 

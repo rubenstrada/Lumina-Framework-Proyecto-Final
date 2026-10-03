@@ -19,6 +19,17 @@
   },
   "original_instructions": 12,
   "responses": 12,
+  "presentation_revision": {
+    "date_local": "2026-10-02",
+    "response_labels_removed": 12,
+    "docx_pages_inspected": 17,
+    "tables_preserved": 8,
+    "figures_preserved": 8,
+    "authorship_preserved": true,
+    "report_matches_generator": true,
+    "framework_code_and_results_unchanged": true,
+    "docx_sha256": "843c76957f7ba5dc003d4d5a9b94e10bda7d5c30b11811fc7955328e1697aabc"
+  },
   "code_generated_figures": 8,
   "template_styles_and_geometry_preserved": true,
   "previous_repository_modified_remotely": false

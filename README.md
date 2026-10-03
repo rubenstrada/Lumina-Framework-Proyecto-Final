@@ -2,7 +2,7 @@
 
 Prototipo funcional en Python del proyecto final de Programación para la inteligencia artificial. Estima ventas acumuladas de las cuatro semanas siguientes por producto y sucursal, compara una regla histórica con Ridge y Random Forest y genera señales para revisar inventario.
 
-Esta es una repo independiente. El [Avance 2](https://github.com/rubenstrada/Dise-o-framework-) permanece como antecedente conceptual y documental, sin ser reemplazado. Mantengo la narrativa de primero conocer los datos, después limpiar y preparar, y finalmente comprobar si un modelo aporta frente a una solución sencilla.
+El proyecto final continúa el trabajo del [Avance 2](https://github.com/rubenstrada/Dise-o-framework-), que se conserva como antecedente. Primero revisé los datos, después los limpié y preparé, y finalmente comparé los modelos con una regla histórica sencilla.
 
 ## Alcance y relación con el documento
 
@@ -14,18 +14,16 @@ El objetivo es venta observada, no demanda ilimitada: las ventas pueden quedar c
 
 ## Ejecutar
 
-Recomendado: Python 3.12, entorno virtual y comandos desde la raíz.
+Desde la raíz del repositorio:
 
 ```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
 python -m pip install -r requirements-lock.txt
 python -m pip install -e . --no-deps
 python scripts/run_final_project.py --config config/project_final.yaml
 python -m pytest -q
 ```
 
-En macOS o Linux, activar con `source .venv/bin/activate`. `pyproject.toml` declara dependencias mínimas; `requirements-lock.txt` fija versiones directas verificadas. No bloquea todas las dependencias transitivas.
+`requirements-lock.txt` contiene las versiones utilizadas de las dependencias directas; `pyproject.toml` declara los requisitos del proyecto.
 
 La fuente versionada permite repetir sin descargar datos. Si `source_path` no existe, el generador crea el escenario; si existe, se carga sin sobrescribirlo. Cambiar la semilla no modifica un CSV existente. El manifiesto distingue parámetros solicitados y metadatos de generación, y registra el hash de la fuente utilizada.
 
