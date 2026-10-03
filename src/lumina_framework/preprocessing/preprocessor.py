@@ -23,6 +23,15 @@ class DataPreprocessor:
     def __init__(self, test_fraction: float = 0.20) -> None:
         self.test_fraction = test_fraction
 
+    @staticmethod
+    def build_transformer(numeric_features, categorical_features):
+        """Devuelve componentes sin ajustar; cada candidato recibe una copia."""
+        return ColumnTransformer([
+            ('numeric', Pipeline([('imputer',SimpleImputer(strategy='median',keep_empty_features=True)),
+                                  ('scaler',StandardScaler())]),list(numeric_features)),
+            ('categorical',Pipeline([('imputer',SimpleImputer(strategy='most_frequent')),
+                                    ('encoder',OneHotEncoder(handle_unknown='ignore'))]),list(categorical_features))])
+
     def prepare(
         self,
         data: pd.DataFrame,
@@ -114,4 +123,3 @@ class DataPreprocessor:
             train_dates=train_dates,
             test_dates=test_dates,
         )
-
