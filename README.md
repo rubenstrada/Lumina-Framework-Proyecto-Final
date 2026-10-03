@@ -107,9 +107,9 @@ MAE mide unidades acumuladas de cuatro semanas por combinación-corte, no error 
 
 ![Desempeño de modelos](artifacts/project_final/figures/comparacion_modelos.png)
 
-## Visualizaciones generadas con código
+## Visualizaciones generadas
 
-Las clases de [exploración](src/lumina_framework/visualization/business.py) y [diagnóstico](src/lumina_framework/visualization/diagnostics.py) generan ocho figuras mediante Matplotlib y Seaborn. PNG es su formato de salida, no evidencia de generación con IA de imágenes. Cada gráfica tiene título y ejes, y su interpretación está en el [punto 7](docs/proyecto_final.md#7).
+Las clases de [exploración](src/lumina_framework/visualization/business.py) y [diagnóstico](src/lumina_framework/visualization/diagnostics.py) generan ocho figuras con Matplotlib y Seaborn. Las visualizaciones muestran el comportamiento de las ventas, las diferencias entre grupos y el desempeño de los modelos. Su interpretación está en el [punto 7](docs/proyecto_final.md#7).
 
 ![Evolución semanal](artifacts/project_final/figures/ventas_semanales.png)
 
