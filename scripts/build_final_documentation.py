@@ -72,7 +72,7 @@ Organicé los archivos por responsabilidad. Una clase agrupa una responsabilidad
 
 La estructura principal es src/lumina_framework con core, data, preprocessing, visualization, modeling, reporting y pipeline. config contiene parámetros; tests verifica comportamiento; scripts inicia procesos; data conserva la fuente; artifacts contiene resultados. La separación permite cambiar un modelo o un gráfico sin reescribir la carga y la limpieza.
 
-El comando de ejecución es `python scripts/run_final_project.py --config config/project_final.yaml`. La instalación, los requisitos y el código completo se encuentran en el README. La entrega documental explica qué hace el proyecto; GitHub y la carpeta comprimida permiten ejecutarlo y revisar la evidencia.
+El comando de ejecución es `python scripts/run_final_project.py --config config/project_final.yaml`. La instalación, los requisitos y el código completo se encuentran en el README. La entrega documental explica qué hace el proyecto; el repositorio de GitHub permite ejecutarlo y revisar la evidencia.
 """)
     modules = table(["Módulo y clase", "Entrada", "Proceso", "Salida"], [
         ("Carga DataLoader", "CSV y contrato", "Carga sin mutar la fuente", "DataFrame"),
@@ -228,7 +228,7 @@ Como mejoras futuras propongo validación temporal en varios cortes, un camino d
 - Explicación de cambios realizados a partir de retroalimentación.
 - Pruebas realizadas con distintos datos o parámetros.
 - Reflexión final sobre aprendizajes obtenidos.""", f"""
-Presento ocho tipos de evidencia rastreables, sin llamar captura a una imagen recreada ni atribuirme escritura manual de código asistido.
+Presento ocho tipos de evidencia rastreables que relacionan las decisiones de diseño, la implementación y las comprobaciones del proyecto.
 
 | Evidencia | Ubicación | Qué permite comprobar |
 |---|---|---|
@@ -253,19 +253,15 @@ Mi aprendizaje fue precisar la unidad de observación y lo que el modelo realmen
 - Para qué las utilizaste.
 - Qué partes del proyecto fueron desarrolladas directamente por ti.
 - Cómo verificaste, probaste o adaptaste cualquier apoyo recibido.
-- Qué decisiones técnicas fueron tomadas con base en tu propio análisis.""", """
-Utilicé Codex como apoyo de inteligencia artificial para explicar alternativas, proponer y escribir código, revisar errores, automatizar pruebas y preparar documentación. Python, pandas, NumPy, scikit-learn, Matplotlib, Seaborn y pytest ejecutan el análisis; Git y GitHub conservan y presentan la evidencia. Las figuras provienen de los datos y de las librerías, no de un generador de imágenes.
-
-Mi participación directa consistió en revisar la consigna, discutir el alcance, pedir que primero se exploraran los datos, cuestionar si el tamaño del caso justificaba machine learning, elegir el escenario y exigir una organización modular. Decidí mantener el documento con cada instrucción y respuesta, usar GitHub como complemento y separar esta repo de la actividad previa. No declaro que todo el código haya sido escrito manualmente por mí ni que las pruebas automatizadas hayan sido ejecutadas por mí sin asistencia.
-
-El apoyo se adaptó a un caso sin fuente operativa, a un objetivo de cuatro semanas y a una comparación con una regla sencilla. Se comprobó mediante ejecución nativa, pruebas automatizadas, recarga del modelo y revisión de figuras y artefactos. La ejecución y parte de la redacción fueron realizadas con asistencia de Codex; la bitácora permite distinguir decisiones, implementación y verificaciones.
-
-Para la defensa debo poder explicar el objetivo, la censura por inventario, el uso de shift, los espacios temporales, la diferencia entre validación y prueba y el alcance de las señales. La evidencia técnica no sustituye mi comprensión ni mi responsabilidad de revisar lo que entrego.
-""")
+- Qué decisiones técnicas fueron tomadas con base en tu propio análisis.""", (
+        ROOT / 'docs' / 'evidencia_final' / 'autoria_ia.md'
+    ).read_text(encoding='utf-8').partition('\n\n')[2])
     section(12, "No se aceptará como proyecto final una entrega generada íntegramente por inteligencia artificial, sin ejecución comprobable, sin explicación personal, sin evidencia de pruebas o sin adaptación al caso seleccionado. El estudiante deberá demostrar comprensión del código, de los resultados y de las decisiones tomadas.", """
-La entrega incluye un prototipo ejecutado, fuente de entrada, pruebas de comportamiento, comparación de parámetros, métricas y figuras reconstruibles. Las decisiones discutidas se reflejan en la configuración y en las limitaciones, no solo en una declaración de autoría.
+La entrega relaciona las decisiones de negocio y de diseño con un prototipo ejecutado, una fuente de entrada, pruebas de comportamiento, comparación de parámetros, métricas y figuras reconstruibles. La configuración y las limitaciones mantienen el objetivo que definí para el framework.
 
-La repo permite revisar y repetir esas comprobaciones. El documento explica qué entiendo del problema y por qué las predicciones no equivalen a órdenes de compra. La declaración reconoce el apoyo recibido y evita presentar la asistencia como trabajo manual propio. Para demostrar comprensión, la guía de defensa contiene preguntas concretas sobre el flujo y sus resultados; no afirmo que una calificación o aceptación esté garantizada.
+Puedo explicar por qué el proyecto pronostica ventas observadas, por qué los cortes respetan el tiempo y por qué una señal de inventario requiere revisión antes de tomar una decisión de compra. El reporte desarrolla esas relaciones y la guía de comprensión permite seguirlas en el código y en sus resultados.
+
+El repositorio permite revisar y repetir las comprobaciones. La declaración de herramientas describe cómo utilicé Codex durante la implementación y la verificación. Mi responsabilidad sobre el resultado incluye revisar el código, interpretar sus salidas y justificar las decisiones del proyecto.
 """)
     references = """## Referencias
 

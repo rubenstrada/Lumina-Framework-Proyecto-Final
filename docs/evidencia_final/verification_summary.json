@@ -7,7 +7,16 @@
   "independent_zip_tests_passed": 58,
   "independent_full_execution": "completed",
   "independent_metrics_identical": true,
-  "docx_pages_inspected": 16,
+  "initial_docx_pages_inspected": 16,
+  "docx_pages_inspected": 17,
+  "methodology_revision": {
+    "date_local": "2026-10-02",
+    "narrative_approved_by_student": true,
+    "word_and_repository_consistent": true,
+    "framework_code_and_results_unchanged": true,
+    "fresh_tests_passed": 58,
+    "fresh_tests_failed": 0
+  },
   "original_instructions": 12,
   "responses": 12,
   "code_generated_figures": 8,

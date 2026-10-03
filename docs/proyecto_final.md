@@ -34,7 +34,7 @@ Organicé los archivos por responsabilidad. Una clase agrupa una responsabilidad
 
 La estructura principal es src/lumina_framework con core, data, preprocessing, visualization, modeling, reporting y pipeline. config contiene parámetros; tests verifica comportamiento; scripts inicia procesos; data conserva la fuente; artifacts contiene resultados. La separación permite cambiar un modelo o un gráfico sin reescribir la carga y la limpieza.
 
-El comando de ejecución es `python scripts/run_final_project.py --config config/project_final.yaml`. La instalación, los requisitos y el código completo se encuentran en el README. La entrega documental explica qué hace el proyecto; GitHub y la carpeta comprimida permiten ejecutarlo y revisar la evidencia.
+El comando de ejecución es `python scripts/run_final_project.py --config config/project_final.yaml`. La instalación, los requisitos y el código completo se encuentran en el README. La entrega documental explica qué hace el proyecto; el repositorio de GitHub permite ejecutarlo y revisar la evidencia.
 
 ## 3
 
@@ -283,7 +283,7 @@ Incluye evidencia suficiente de trabajo propio. Debes incorporar al menos cinco 
 
 ### Respuesta
 
-Presento ocho tipos de evidencia rastreables, sin llamar captura a una imagen recreada ni atribuirme escritura manual de código asistido.
+Presento ocho tipos de evidencia rastreables que relacionan las decisiones de diseño, la implementación y las comprobaciones del proyecto.
 
 | Evidencia | Ubicación | Qué permite comprobar |
 |---|---|---|
@@ -314,13 +314,23 @@ Incluye una declaración de autoría y uso responsable de herramientas digitales
 
 ### Respuesta
 
-Utilicé Codex como apoyo de inteligencia artificial para explicar alternativas, proponer y escribir código, revisar errores, automatizar pruebas y preparar documentación. Python, pandas, NumPy, scikit-learn, Matplotlib, Seaborn y pytest ejecutan el análisis; Git y GitHub conservan y presentan la evidencia. Las figuras provienen de los datos y de las librerías, no de un generador de imágenes.
+Mi punto de partida fue comprender la lógica del negocio y definir qué problema debía resolver el framework antes de escribir código. Ya había trabajado con modelos, por lo que primero necesitaba establecer qué información analizar, qué resultado obtener y cómo podría utilizarse para tomar decisiones.
 
-Mi participación directa consistió en revisar la consigna, discutir el alcance, pedir que primero se exploraran los datos, cuestionar si el tamaño del caso justificaba machine learning, elegir el escenario y exigir una organización modular. Decidí mantener el documento con cada instrucción y respuesta, usar GitHub como complemento y separar esta repo de la actividad previa. No declaro que todo el código haya sido escrito manualmente por mí ni que las pruebas automatizadas hayan sido ejecutadas por mí sin asistencia.
+En este caso, relacioné el historial de ventas con la revisión del inventario por producto y sucursal. Comprendí que las ventas registradas no representan necesariamente toda la demanda: si se agota el inventario, pueden existir necesidades de compra que no quedan reflejadas en las ventas. Por eso delimité el objetivo como pronosticar ventas observadas y generar señales de revisión, sin presentar las predicciones como órdenes automáticas de compra.
 
-El apoyo se adaptó a un caso sin fuente operativa, a un objetivo de cuatro semanas y a una comparación con una regla sencilla. Se comprobó mediante ejecución nativa, pruebas automatizadas, recarga del modelo y revisión de figuras y artefactos. La ejecución y parte de la redacción fueron realizadas con asistencia de Codex; la bitácora permite distinguir decisiones, implementación y verificaciones.
+Antes de evaluar modelos necesitaba explorar los datos y comprender su comportamiento. Revisar columnas, tipos, frecuencia temporal, faltantes, duplicados y diferencias entre grupos permite identificar qué información es utilizable y qué transformaciones requiere. También consideré que un valor alto puede corresponder a un comportamiento válido del negocio, por lo que no debía eliminarse automáticamente por parecer atípico.
 
-Para la defensa debo poder explicar el objetivo, la censura por inventario, el uso de shift, los espacios temporales, la diferencia entre validación y prueba y el alcance de las señales. La evidencia técnica no sustituye mi comprensión ni mi responsabilidad de revisar lo que entrego.
+Codex me ayudó a explorar alternativas y discutir horizontes de predicción. Las decisiones finales las tomé después de relacionar esas alternativas con el objetivo del proyecto. Definí un horizonte de cuatro semanas para obtener una salida concreta y comparable. También consideré necesario comparar los modelos con una regla histórica sencilla: tener muchas filas o utilizar machine learning no demuestra, por sí solo, que la solución aporte valor.
+
+La organización del framework surgió de experiencias anteriores. En un backend de ERP había concentrado demasiada lógica en archivos como app.py, lo que dificultaba localizar responsabilidades y modificar componentes. Esa experiencia influyó en mi decisión de separar carga, validación, limpieza, preprocesamiento, visualización, modelado, evaluación y reportes. Tenía claro cómo quería organizar la solución y qué responsabilidad debían tener sus componentes, métodos y funciones.
+
+Utilicé Codex para acelerar la escritura del código, desarrollar las definiciones que fui estableciendo y apoyar la revisión y las comprobaciones de la implementación. El trabajo fue iterativo: discutí alternativas, indiqué los comportamientos esperados y solicité ajustes para mantener la organización y el alcance que buscaba. Codex también apoyó la ejecución de pruebas automatizadas y la preparación de la documentación.
+
+El apoyo se adaptó al contrato de datos, al objetivo de cuatro semanas y a la comparación con una referencia sencilla. La implementación se comprobó mediante ejecución nativa, pruebas, recarga del pipeline guardado y revisión de figuras y artefactos. La bitácora conserva decisiones y ajustes; las comprobaciones se realizaron con asistencia de Codex.
+
+Las pruebas y los resultados permiten comprobar el funcionamiento técnico. Mi responsabilidad es comprender y explicar cómo se construyen las variables, por qué se respeta el orden temporal, cómo se comparan los modelos y qué limitaciones tienen sus resultados. La IA fue una herramienta de apoyo dentro de ese proceso; las decisiones finales sobre el problema, el alcance y la organización permanecieron bajo mi criterio.
+
+Para desarrollar y verificar el prototipo utilicé Python, pandas, NumPy, scikit-learn, Matplotlib, Seaborn, PyYAML, joblib y pytest. Git y GitHub conservan y presentan la evidencia; Microsoft Word se utilizó para el documento. Las figuras son salidas de Matplotlib y Seaborn ejecutadas sobre los datos del proyecto.
 
 ## 12
 
@@ -328,9 +338,11 @@ No se aceptará como proyecto final una entrega generada íntegramente por intel
 
 ### Respuesta
 
-La entrega incluye un prototipo ejecutado, fuente de entrada, pruebas de comportamiento, comparación de parámetros, métricas y figuras reconstruibles. Las decisiones discutidas se reflejan en la configuración y en las limitaciones, no solo en una declaración de autoría.
+La entrega relaciona las decisiones de negocio y de diseño con un prototipo ejecutado, una fuente de entrada, pruebas de comportamiento, comparación de parámetros, métricas y figuras reconstruibles. La configuración y las limitaciones mantienen el objetivo que definí para el framework.
 
-La repo permite revisar y repetir esas comprobaciones. El documento explica qué entiendo del problema y por qué las predicciones no equivalen a órdenes de compra. La declaración reconoce el apoyo recibido y evita presentar la asistencia como trabajo manual propio. Para demostrar comprensión, la guía de defensa contiene preguntas concretas sobre el flujo y sus resultados; no afirmo que una calificación o aceptación esté garantizada.
+Puedo explicar por qué el proyecto pronostica ventas observadas, por qué los cortes respetan el tiempo y por qué una señal de inventario requiere revisión antes de tomar una decisión de compra. El reporte desarrolla esas relaciones y la guía de comprensión permite seguirlas en el código y en sus resultados.
+
+El repositorio permite revisar y repetir las comprobaciones. La declaración de herramientas describe cómo utilicé Codex durante la implementación y la verificación. Mi responsabilidad sobre el resultado incluye revisar el código, interpretar sus salidas y justificar las decisiones del proyecto.
 ## Referencias
 
 pandas development team. (s. f.). *pandas documentation*. Recuperado el 2 de octubre de 2026, de https://pandas.pydata.org/docs/

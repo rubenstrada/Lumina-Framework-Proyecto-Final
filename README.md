@@ -8,7 +8,7 @@ Esta es una repo independiente. El [Avance 2](https://github.com/rubenstrada/Dis
 
 El caso describe a Lumina Datos Operativos y Red Comercial Boreal, pero no entrega una fuente tabular. Para comprobar el flujo, se simularon los datos de un escenario de 20 productos, 5 sucursales y 104 semanas, con semilla 42. Las columnas y reglas pertenecen a este prototipo; los resultados no son hallazgos empresariales reales. Esta nota aplica a todas las figuras y tablas.
 
-El Word conserva las doce instrucciones seguidas de sus respuestas. La [versión navegable del reporte](docs/proyecto_final.md) sigue el mismo orden. La repo complementa el documento con código, configuración, pruebas y artefactos que pueden ejecutarse y revisarse. El ZIP es una copia portable del proyecto, sin entornos locales ni archivos internos de Git.
+El Word conserva las doce instrucciones seguidas de sus respuestas. La [versión navegable del reporte](docs/proyecto_final.md) sigue el mismo orden. La repo complementa el documento con código, configuración, pruebas y artefactos que pueden ejecutarse y revisarse.
 
 El objetivo es venta observada, no demanda ilimitada: las ventas pueden quedar censuradas por inventario. Las señales no son órdenes de compra y el desempeño predictivo no demuestra rentabilidad.
 
@@ -152,4 +152,10 @@ La última fecha puede tener menos combinaciones por ventanas incompletas. Las s
 
 ## Autoría y herramientas
 
-Ruben Estrada Rangel participó en delimitación del caso, revisión de alternativas y decisiones de alcance, organización y entrega. Codex asistió en explicación, implementación, depuración, pruebas y documentación. No se atribuye toda la escritura ni la ejecución automatizada al estudiante sin asistencia. La [bitácora](docs/evidencia_final/execution_log.md) y la [declaración](docs/evidencia_final/autoria_ia.md) distinguen participación, apoyo y responsabilidad. La defensa personal sigue siendo necesaria.
+Antes de comenzar a programar, busqué entender el negocio, el problema y la información necesaria para resolverlo. Mi experiencia previa con machine learning me llevó a explorar los datos antes de elegir un modelo y a comprobar si una solución más compleja aportaba frente a una regla histórica sencilla.
+
+Las decisiones finales sobre el alcance, la arquitectura y las responsabilidades de cada componente las asumí yo. La organización en clases, métodos y funciones parte de una experiencia anterior en un backend de ERP, donde concentrar demasiada lógica en `app.py` dificultaba localizar responsabilidades y mantener el código. En este proyecto quise que cada capacidad tuviera una ubicación clara y que pudiera explicar qué recibe, qué hace y qué devuelve.
+
+Utilicé Codex para acelerar la escritura de código, profundizar en alternativas técnicas y explorar conceptualmente distintos horizontes de predicción. Esa exploración amplió las opciones que pude considerar; la evaluación ejecutada en este prototipo corresponde al horizonte de cuatro semanas documentado en los resultados.
+
+También me apoyé en Codex durante la implementación, la ejecución, la revisión de errores, las pruebas y la documentación. Presento el proyecto como un trabajo propio desarrollado con asistencia de IA, y mantengo la responsabilidad de comprender, revisar y defender sus decisiones y limitaciones. La [declaración de autoría](docs/evidencia_final/autoria_ia.md) detalla mi participación y el apoyo recibido; la [bitácora](docs/evidencia_final/execution_log.md) registra las comprobaciones realizadas.

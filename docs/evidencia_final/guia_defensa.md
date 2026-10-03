@@ -1,6 +1,6 @@
 # Guía de comprensión del prototipo
 
-Esta guía sirve para revisar el trabajo y preparar la defensa. Leer respuestas no prueba por sí solo dominio del código: conviene ejecutar y modificar una copia, revisar los resultados y explicarlos con palabras propias.
+Uso esta guía para revisar mi trabajo y preparar la defensa de las decisiones que tomé. Mi punto de partida fue comprender el negocio y el problema antes de programar; con mi experiencia previa en machine learning, busqué explorar los datos antes de elegir un modelo. Para comprobar mi comprensión, necesito ejecutar y modificar una copia, revisar los resultados y explicar con mis propias palabras cómo funciona el prototipo.
 
 1. ¿Qué representa una fila? Un producto en una sucursal durante una semana; los cortes posteriores son horizontes, no nuevas empresas.
 2. ¿Qué se predice? La suma de ventas observadas de las cuatro semanas siguientes; no demanda que habría existido sin límites de inventario.
@@ -13,6 +13,6 @@ Esta guía sirve para revisar el trabajo y preparar la defensa. Leer respuestas 
 9. ¿Qué hace una señal? Compara previsión y stock al cierre para revisión. No incorpora reposiciones pendientes, plazos ni costos. Inventario desconocido requiere revisión de calidad.
 10. ¿Por qué no sumar ventanas para calcular ventas anuales? Horizontes sucesivos comparten semanas; sumarlos contaría ventas varias veces.
 11. ¿Qué demuestra el resultado? Que el flujo se ejecuta y mejora una referencia en el escenario y periodo evaluados. No demuestra causalidad, generalización a una empresa ni rentabilidad.
-12. ¿Quién hizo qué? El estudiante delimitó, cuestionó y decidió aspectos del proyecto; Codex apoyó implementación y comprobaciones. Esa asistencia se declara, y la defensa de decisiones corresponde al estudiante.
+12. ¿Quién hizo qué? Yo asumí las decisiones finales de alcance, arquitectura y responsabilidades de clases, métodos y funciones, apoyándome en mi experiencia previa con un ERP cuya lógica se concentraba en `app.py`. Utilicé Codex para acelerar la escritura de código, explorar alternativas conceptuales y apoyar la implementación, la ejecución, la revisión y las comprobaciones. Los distintos horizontes se consideraron conceptualmente; la evaluación ejecutada corresponde a cuatro semanas. Declaro esa asistencia y mantengo la responsabilidad de comprender y defender las decisiones y limitaciones del proyecto.
 
 Para comprobar entendimiento, localizar la configuración, cambiar un parámetro en una copia, predecir qué debería variar y contrastarlo con la ejecución. No cambiar parámetros después de observar prueba para presentar una mejora como evaluación independiente.
