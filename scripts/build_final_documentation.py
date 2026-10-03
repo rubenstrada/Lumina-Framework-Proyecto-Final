@@ -164,7 +164,7 @@ El intervalo orientativo del 95 % para MAE del elegido menos MAE de referencia f
     ]
     chart_text = "\n\n".join(f"#### {title}\n\n![{title}](../artifacts/project_final/figures/{filename})\n\n{interpretation}" for filename, title, interpretation in charts)
     section(7, "Genera visualizaciones que ayuden a comprender los datos, los patrones encontrados, el desempeño del modelo o los resultados obtenidos. Las visualizaciones deben tener título, etiquetas claras y una interpretación escrita.", f"""
-Las ocho visualizaciones se producen al ejecutar el pipeline con Matplotlib y Seaborn. Los archivos PNG son la salida normal de esas librerías; no son gráficos dibujados o generados por una herramienta de imágenes. Las clases visualizadoras agregan los datos antes de dibujar y cierran las figuras al guardar. El código permite reconstruir cada resultado.
+Utilicé Matplotlib y Seaborn para explorar el comportamiento de las ventas y revisar el desempeño de los modelos. Las ocho visualizaciones presentan la evolución temporal, diferencias entre grupos y resultados del pronóstico. Cada figura incluye títulos, etiquetas claras y una interpretación relacionada con las preguntas del negocio.
 
 {chart_text}
 """)

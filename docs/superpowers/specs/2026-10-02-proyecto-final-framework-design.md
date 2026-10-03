@@ -24,7 +24,7 @@ El proyecto evaluará si un modelo supervisado mejora una referencia sencilla pa
 - Flujo completo desde la carga hasta la generación de reportes.
 - Comparación temporal entre una línea base, Ridge y Random Forest.
 - Métricas globales y segmentadas.
-- Visualizaciones exploratorias y de desempeño generadas con código.
+- Visualizaciones exploratorias y de desempeño.
 - Modelo y preprocesamiento persistidos como un único pipeline.
 - README, bitácora, evidencias, reporte académico y paquete final.
 
@@ -140,8 +140,6 @@ Todas las figuras se generarán con Matplotlib y Seaborn, tendrán títulos de n
 7. Distribución y segmentación de errores.
 8. Importancia por permutación y, para Ridge, coeficientes transformados.
 
-Las imágenes serán salidas reproducibles del código, no gráficos creados por inteligencia artificial.
-
 ## Arquitectura y evolución del repositorio
 
 Se conservará la organización por capacidades del Avance 2. Se ampliarán componentes existentes y se agregarán solo límites que representen una responsabilidad nueva.
@@ -241,4 +239,3 @@ La declaración de IA especificará herramientas, usos, decisiones del estudiant
 | Sobreajuste | Validación temporal, prueba final y parámetros controlados |
 | Proyecto sobredimensionado | Sin frontend, base de datos, API ni modelos no relacionados |
 | Evidencia de IA sin autoría | Bitácora, pruebas, historial, explicación y reflexión personal |
-

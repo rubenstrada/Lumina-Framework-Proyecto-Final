@@ -137,7 +137,7 @@ Artefactos: perfiles antes/después, bitácora de limpieza, cortes, métricas, p
 | 4 Modelos | Referencia, Ridge y Random Forest |
 | 5 Métricas | Evaluador y pruebas conocidas |
 | 6 Comparación | Tablas de validación y prueba |
-| 7 Visualizaciones | Ocho figuras con código e interpretación |
+| 7 Visualizaciones | Ocho figuras e interpretación |
 | 8 Documentación | README y docstrings |
 | 9 Reporte final | docs/proyecto_final.md y Word |
 | 10 Evidencia propia | Decisiones, código explicado, comparación, errores, interpretación, cambios, pruebas y reflexión |

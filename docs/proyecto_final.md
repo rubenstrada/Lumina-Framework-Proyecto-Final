@@ -159,7 +159,7 @@ Genera visualizaciones que ayuden a comprender los datos, los patrones encontrad
 
 ### Respuesta
 
-Las ocho visualizaciones se producen al ejecutar el pipeline con Matplotlib y Seaborn. Los archivos PNG son la salida normal de esas librerías; no son gráficos dibujados o generados por una herramienta de imágenes. Las clases visualizadoras agregan los datos antes de dibujar y cierran las figuras al guardar. El código permite reconstruir cada resultado.
+Utilicé Matplotlib y Seaborn para explorar el comportamiento de las ventas y revisar el desempeño de los modelos. Las ocho visualizaciones presentan la evolución temporal, diferencias entre grupos y resultados del pronóstico. Cada figura incluye títulos, etiquetas claras y una interpretación relacionada con las preguntas del negocio.
 
 #### Ventas a través del tiempo
 

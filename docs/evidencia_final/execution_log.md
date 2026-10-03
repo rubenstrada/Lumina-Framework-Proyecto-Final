@@ -26,7 +26,7 @@ Ruling: se agrega inventario_cierre como metadato, calculado con datos observado
 Ruling: con solo doce semanas en prueba, el intervalo bootstrap se presenta como orientativo y conserva bloques de cuatro semanas debido a etiquetas superpuestas.
 
 Task 6: complete. Ocho configuraciones de validación, tres enfoques en prueba, imputación solo con entrenamiento y categorías nuevas comprobadas.
-Task 7: complete. Ocho gráficas producidas por Matplotlib y Seaborn e inspeccionadas; no se utilizó IA de imágenes.
+Task 7: complete. Ocho gráficas producidas por Matplotlib y Seaborn e inspeccionadas.
 Task 8: complete. Perfiles, limpieza, métricas, predicciones, señales, modelo, reporte y manifiesto generados.
 Task 9: complete. Ejecución inicial y repetida sobre 10,431 filas; 10,369 después de limpiar. Cortes utilizables: 6,017 entrenamiento, 1,159 validación, 1,139 prueba.
 
